@@ -4,21 +4,18 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCircleQuestion,
     faCircleXmark,
-    faCloudUpload,
     faCoins,
     faEarthAsia,
     faEllipsisVertical,
     faGear,
     faKeyboard,
     faMagnifyingGlass,
-    faMessage,
     faSignOut,
     faSpinner,
-    faUpload,
     faUser,
 } from '@fortawesome/free-solid-svg-icons';
-import headlessTippy from '@tippyjs/react/headless';
 import Tippy from '@tippyjs/react';
+import HeadlessTippy from '@tippyjs/react/headless';
 import 'tippy.js/dist/tippy.css';
 
 import styles from './Header.module.scss';
@@ -27,6 +24,8 @@ import { Wrapper as PopperWrapper } from '~/component/Popper';
 import AccountItem from '~/component/AccountItem';
 import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
+import { UploadIcon } from '~/component/Icons';
+import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
 
@@ -112,7 +111,7 @@ function Header() {
             <div className={cx('inner')}>
                 <img src={images.logo} alt="tiktok" />
 
-                <headlessTippy
+                <HeadlessTippy
                     interactive
                     visible={searchResult.length > 0}
                     render={(attrs) => (
@@ -138,14 +137,14 @@ function Header() {
                             <FontAwesomeIcon icon={faMagnifyingGlass} />
                         </button>
                     </div>
-                </headlessTippy>
+                </HeadlessTippy>
 
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
                             <Tippy delay={300} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
-                                    <FontAwesomeIcon icon={faCloudUpload} />
+                                    <UploadIcon />
                                 </button>
                                 {/* <button className={cx('action-btn')}>
                                 <FontAwesomeIcon icon={faMessage} />
@@ -161,10 +160,11 @@ function Header() {
 
                     <Menu items={currentUser ? userMenu : MENU_ITEMS} onChange={handleMenuChange}>
                         {currentUser ? (
-                            <img
+                            <Image
                                 className={cx('user-avata')}
                                 alt="Nguyen Van A"
                                 src="https://p16-sign-va.tiktokcdn.com/tos-useast2a-avt-0068-giso/95b67d66735730369505a41f1185e4c9~c5_100x100.jpeg?x-expires=1664175600&x-signature=H8env%2FctOHNmcqg%2FWDIwNTClRnQ%3D"
+                                // fallback="https://thuthuatnhanh.com/wp-content/uploads/2019/07/hinh-girl-xinh-gai-dep-co-trang-Trung-Quoc-3.jpg"
                             />
                         ) : (
                             <button className={cx('more-btn')}>
