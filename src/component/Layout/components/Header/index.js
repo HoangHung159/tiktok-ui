@@ -24,7 +24,7 @@ import { Wrapper as PopperWrapper } from '~/component/Popper';
 import AccountItem from '~/component/AccountItem';
 import Button from '~/component/Button';
 import Menu from '~/component/Popper/Menu';
-import { UploadIcon } from '~/component/Icons';
+import { InboxIcon, MessageIcon, SearchIcon, UploadIcon } from '~/component/Icons';
 import Image from '~/component/Image';
 
 const cx = classNames.bind(styles);
@@ -142,13 +142,21 @@ function Header() {
                 <div className={cx('actions')}>
                     {currentUser ? (
                         <>
-                            <Tippy delay={300} content="Upload video" placement="bottom">
+                            <Tippy delay={[0, 50]} content="Upload video" placement="bottom">
                                 <button className={cx('action-btn')}>
                                     <UploadIcon />
                                 </button>
-                                {/* <button className={cx('action-btn')}>
-                                <FontAwesomeIcon icon={faMessage} />
-                                </button> */}
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Message" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <MessageIcon />
+                                </button>
+                            </Tippy>
+                            <Tippy delay={[0, 50]} content="Inbox" placement="bottom">
+                                <button className={cx('action-btn')}>
+                                    <InboxIcon />
+                                    <span className={cx('badge')}>12</span>
+                                </button>
                             </Tippy>
                         </>
                     ) : (
